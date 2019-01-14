@@ -34,6 +34,20 @@ module.exports = {
                 }, {
                     loader: 'less-loader' // compiles Less to CSS
                 }]
+            },
+            {
+                test: /\.(png|jpeg|ttf|jpg)$/,
+                use: [
+                    { loader: 'url-loader', options: { limit: 8192 } }
+                    // limit => file.size =< 8192 bytes ? DataURI : File
+                ]
+            },
+            {
+                test: /\.(jpe?g|png|webp)$/i,
+                loaders: [
+                    'file-loader',
+                    'webp-loader'
+                ]
             }
         ]
     },

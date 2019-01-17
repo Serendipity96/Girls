@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader'
+import { Router, Route, hashHistory } from 'react-router'
 import App from './App'
+import Homepage from './components/Homepage/Homepage'
 
-const render = (App) => {
-  ReactDOM.render(
-    <AppContainer>
-      <App />
-    </AppContainer>,
-    document.getElementById('root')
-  )
-}
 
-render(App)
+ReactDOM.render((
+    <Router history={hashHistory}>
+      <Route path="/" component={App}/>
+      <Route path="/Homepage" component={Homepage}/>
+    </Router>
+), document.getElementById('root'))
 
-if (module.hot) {
-  module.hot.accept('./App', () => render(App))
-}
+
+
